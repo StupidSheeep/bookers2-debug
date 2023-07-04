@@ -1,13 +1,17 @@
+<h2>Forrows Users</h2>
+
 <table class='table'>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
+  <% if @users.exists? %>
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th colspan="5"></th>
+      </tr>
+    </thead>
+    <tbody>
+  
+    <% @users.each do |user| %>
       <tr>
         <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
         <td><%= user.name %></td>
@@ -21,11 +25,14 @@
           <% else %>
             <td><%= link_to "フォローする", user_relationships_path(user.id), method: :post %></td>
           <% end %>
+
         <% end %>
         <td><%= link_to 'Show', user %></td>
-
       </tr>
     <% end %>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
 
   </tbody>
 </table>
