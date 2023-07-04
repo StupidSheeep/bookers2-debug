@@ -2,15 +2,17 @@ class BooksController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destory]
 
   def show
-    @book = Book.new
     @books = Book.find(params[:id])
+    @book = Book.new
+    @book_comment = BookComment.new
+    @test = Book.all
   end
 
   def index
     @books = Book.all
     @book = Book.new
   end
- 
+
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
