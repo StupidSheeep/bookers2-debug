@@ -19,7 +19,9 @@
         <td><%= book.body %></td>
 
         <!--応用課題3追加-->
-        <td><%= render 'favorites/favorite', book: book %></td>
+        <td id="favorite_buttons_<%= book.id %>" >
+          <%= render 'favorites/favorite', book: book %>
+        </td>
         <td><p>コメント件数:<%= book.book_comments.count %></p></td>
 
       </tr>
