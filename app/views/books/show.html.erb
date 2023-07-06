@@ -24,19 +24,7 @@
 
           <!--応用課題3追加-->
           <td>
-          <% if @books.favorited_by?(current_user) %>
-            <p>
-              <%= link_to book_favorites_path(@books.id), method: :delete do %>
-              ♥<%= @books.favorites.count %>
-              <% end %>
-
-            <% else %>
-            <p>
-              <%= link_to book_favorites_path(@books.id), method: :post do %>
-              ♡<%= @books.favorites.count %>
-              <% end %>
-            </p>
-          <% end %>
+            <%= render "favorites/favorite", book: @books %>
           </td>
           <td><p>コメント件数:<%= @books.book_comments.count %></p></td>
 
