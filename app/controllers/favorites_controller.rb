@@ -7,6 +7,7 @@ class FavoritesController < ApplicationController
     # redirect_to request.referer
   end
 
+
   def destroy
     @book = Book.find(params[:book_id])
     favorite = current_user.favorites.find_by(book_id: @book.id)
